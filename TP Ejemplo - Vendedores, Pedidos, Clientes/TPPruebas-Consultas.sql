@@ -1,4 +1,7 @@
--- Consultas sobre una tabla
+-- CONSULTAS SOBRE UNA TABLA
+
+-- USA LA BASE DE DATOS Pruebas
+USE Pruebas;
 
 -- 6. Mostrar un listado de todos los clientes del negocio
 SELECT * FROM clientes;
@@ -13,20 +16,16 @@ SELECT * FROM pedidos ORDER BY fecha DESC; -- Ordena la fecha de mayor a menor (
 SELECT * FROM pedidos ORDER BY fecha DESC LIMIT 2;
 
 -- 10. Devolver un listado de la identificación de los clientes que hayan realizado algún pedido, evitando que los mismos se repitan
-SELECT DISTINCT idCliente FROM clientes; -- con DISTINCT
-                                         -- con GROUP
+SELECT DISTINCT idCliente FROM clientes; -- Con DISTINCT
+SELECT idCliente FROM clientes GROUP BY idCliente; -- Con GROUP BY
                                          
 -- 11. Generar un listado con todos los pedidos que se realizaron durante el año 2022, cuyo proveedor sea ALIMENTAR SRL
-SELECT * FROM pedidos WHERE YEAR(fecha) = 2022 AND proveedor LIKE 'ALIMENTAR SRL';  -- YEAR extrae de una fecha el año (Como se da cuenta que es el año, cuenta que sea 4 digitos?)
-SELECT * FROM pedidos WHERE fecha LIKE '%2022%' AND proveedor LIKE 'ALIMENTAR SRL';   -- Con LIKE
-																					 -- MONT: mes
-																					 -- DAY: dia
-
+SELECT * FROM pedidos WHERE YEAR(fecha) = 2022 AND proveedor LIKE 'ALIMENTAR SRL'; -- Con YEAR
+SELECT * FROM pedidos WHERE fecha LIKE '%2022%' AND proveedor LIKE 'ALIMENTAR SRL'; -- Con LIKE
+																				
 -- 12. Generar un listado con el nombre y los apellidos de los vendedores que tienen una comisión entre 10% y 20%
-SELECT nombre, apellidoP, apellidoM FROM vendedores WHERE comision BETWEEN 10 AND 20;  -- con BETWEEN
-SELECT nombre, apellidoP, apellidoM FROM vendedores WHERE comision IN (10, 20);        -- con IN
-
-SELECT * FROM vendedores;
+SELECT nombre, apellidoP, apellidoM FROM vendedores WHERE comision BETWEEN 10 AND 20; -- Con BETWEEN
+SELECT nombre, apellidoP, apellidoM FROM vendedores WHERE comision IN (10, 20); -- Con IN
 
 -- 13. Determinar la comisión más alta que tiene un vendedor
 SELECT MAX(comision) AS MAXIMA_COMISION FROM vendedores;
@@ -48,4 +47,3 @@ SELECT DISTINCT nombre FROM vendedores WHERE nombre LIKE '%EL' OR nombre LIKE '%
 
 -- NOTA: nombre de los clientes que NO empiezan por A
 SELECT nombre, apellidoP, apellidoM FROM clientes WHERE nombre NOT LIKE 'A%' ORDER BY nombre;
-SELECT nombre, apellidoP, apellidoM FROM clientes WHERE NOT (nombre LIKE 'A%') ORDER BY nombre; -- NO RECOMENDADO

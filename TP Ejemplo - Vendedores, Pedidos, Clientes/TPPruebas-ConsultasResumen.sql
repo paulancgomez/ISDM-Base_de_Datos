@@ -1,5 +1,8 @@
 -- CONSULTAS RESUMEN
 
+-- USA LA BASE DE DATOS Pruebas
+USE Pruebas;
+
 -- 19. Calcular la suma de los totales de los pedidos que aparecen en la tabla pedido.
 SELECT SUM(importe) AS SUMA_PEDIDOS FROM pedidos;
 
@@ -16,4 +19,4 @@ SELECT COUNT(*) AS CANT_CLIENTES FROM clientes;
 SELECT MAX(importe) AS IMPORTE_MAXIMO FROM pedidos;
 
 -- 24. Mostrar cuál es el total más bajo registrado en la tabla de pedidos.
-SELECT DISTINCT MIN(importe) AS IMPORTE_MINIMO FROM pedidos; -- Si hay dos valores iguales maximos no hace falta el DISTINCT?
+SELECT MIN(importe) AS IMPORTE_MINIMO FROM pedidos;
