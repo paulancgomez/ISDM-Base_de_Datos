@@ -1,5 +1,7 @@
 -- CONSULTAS DE RESUMEN (FUNCIONES DE AGREGACION): Conteo, Maximo, Minimo, Suma, Promedio
 
+USE tp5;
+
 -- 39. Contar el número total de productos que hay en la tabla productos.
 SELECT COUNT(*) FROM productos; -- IMPORTANTE: La idea es contar sobre un atributo clave (porque el atributo clave no va a tener valores nulos). Valores nulos no cuenta.
 SELECT COUNT(*) AS CANTIDAD FROM productos; -- con alias

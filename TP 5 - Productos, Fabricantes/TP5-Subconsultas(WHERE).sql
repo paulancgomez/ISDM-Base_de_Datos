@@ -1,5 +1,6 @@
--- CONSULTAS DE RESUMEN (FUNCIONES DE AGREGACION): Uso las subconsultas cuando tenga que mostrar algo de una tabla pero que tenga que cumplir alguna condicion en otra tabla 
-use fabricantesarticulos;
+-- SUBCONSULTAS: Uso las subconsultas cuando tenga que mostrar algo de una tabla que tenga que cumplir alguna condicion en otra tabla. 
+
+USE tp5;
 
 -- 52. Devuelve todos los productos del fabricante Lenovo. (Sin utilizar INNER JOIN).
 SELECT * FROM productos WHERE codFabricante IN (SELECT codFabricante FROM fabricantes WHERE nombre = 'LENOVO');

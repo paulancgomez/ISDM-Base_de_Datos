@@ -4,17 +4,17 @@ SHOW DATABASES;
 -- Si existe la BD 'fabricantesArticulos' la borra
 DROP DATABASE IF EXISTS fabricantesArticulos;
 
--- CREO LA BASE DE DATOS TP5
+-- CREO LA BASE DE DATOS fabricantesArticulos
 CREATE DATABASE fabricantesArticulos;
 
 -- USAR LA BASE DE DATOS
-use fabricantesArticulos;
+USE fabricantesArticulos;
 
 DROP TABLE IF EXISTS fabricantes;
 
--- Crear la tabla FABRICANTES
+-- CREAR LA TABLA fabricantes
 CREATE TABLE fabricantes(
-	codigo INT auto_increment,
+	codigo INT AUTO_INCREMENT,
     nombre NVARCHAR(100),
     PRIMARY KEY (codigo)
 );
@@ -23,7 +23,7 @@ DROP TABLE IF EXISTS articulos;
 
 -- CREO LA TABLA articulos
 CREATE TABLE articulos(
-	codigo INT auto_increment,
+	codigo INT AUTO_INCREMENT,
     nombre NVARCHAR(100),
     precio INT,
     fabricante INT,
@@ -31,7 +31,7 @@ CREATE TABLE articulos(
     FOREIGN KEY (fabricante) REFERENCES fabricantes(codigo)
 );
 
--- Insertar los siguientes datos en la tabla FABRICANTES
+-- INSERTAR DATOS EN LA TABLA fabricantes
 INSERT INTO fabricantes(nombre)
 VALUES ('WISKAS'),
        ('DOGUI'),
@@ -39,11 +39,11 @@ VALUES ('WISKAS'),
        ('TODO MODA'),
        ('CANON');
 
--- Insertar los siguientes datos en la tabla articulos
-INSERT INTO articulos (nombre, precio, fabricante) VALUES
-('A', 200, 1),
-('B', 300, 2),
-('C', 500, 4), 
-('D', 500, 2), 
-('E', 1000, 3),
-('LLLMENLLL', 2000, 5);
+-- INSERTAR DATOS EN LA TABLA articulos
+INSERT INTO articulos (nombre, precio, fabricante)
+VALUES ('A', 200, 1),
+       ('B', 300, 2),
+       ('C', 500, 4), 
+       ('D', 500, 2), 
+       ('E', 1000, 3),
+       ('LLLMENLLL', 23000, 5);
