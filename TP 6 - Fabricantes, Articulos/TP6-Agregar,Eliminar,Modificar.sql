@@ -13,7 +13,7 @@ UPDATE articulos SET nombre = 'OREO' WHERE codigo = 8;
 UPDATE articulos SET precio = precio * 1.15;
 
 -- 22.- Aplicar un descuento de $50 a todos los artículos cuyo precio sea superior a $800
-UPDATE articulos SET precio = precio - 50.00 WHERE precio > 800.00;
+UPDATE articulos SET precio = precio - 50 WHERE precio > 800;
 
 -- 23.- Agregar un nuevo para el fabricante LENOVO
 INSERT INTO articulos (nombre, precio, fabricante)

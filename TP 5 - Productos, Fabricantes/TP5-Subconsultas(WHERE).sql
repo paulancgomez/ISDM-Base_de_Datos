@@ -6,7 +6,7 @@ USE tp5;
 SELECT * FROM productos WHERE codFabricante IN (SELECT codFabricante FROM fabricantes WHERE nombre = 'LENOVO');
 
 -- 53. Devuelve todos los datos de los productos que tienen el mismo precio que el producto más caro del fabricante Lenovo. (Sin utilizar INNER JOIN). ????
-SELECT * FROM productos WHERE precio IN (SELECT MAX(precio) FROM productos WHERE codFabricante = (SELECT codFabricante FROM fabricantes WHERE nombre = 'LENOVO'));
+SELECT * FROM productos WHERE precio IN (SELECT MAX(precio) FROM productos WHERE codFabricante IN (SELECT codFabricante FROM fabricantes WHERE nombre = 'LENOVO'));
 
 -- 54. Lista el nombre del producto más caro del fabricante Lenovo.
 SELECT nombre FROM productos WHERE precio IN (SELECT MAX(precio) FROM productos WHERE codFabricante IN (SELECT codFabricante FROM fabricantes WHERE nombre = 'LENOVO'));

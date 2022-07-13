@@ -28,7 +28,7 @@ SELECT fabricantes.nombre AS FABRICANTE, AVG(precio) AS PRECIO_MEDIO FROM fabric
 SELECT f.nombre AS FABRICANTE, AVG(precio) AS PRECIO_MEDIO FROM fabricantes f INNER JOIN articulos ON f.codigo = fabricante GROUP BY fabricante HAVING AVG(precio) > 350; -- Con alias
 
 -- 17.- Mostrar el nombre y el precio del articulo más barato de la tienda
-SELECT nombre, precio FROM articulos WHERE codigo IN (SELECT codigo FROM articulos WHERE precio IN (SELECT MIN(precio) FROM articulos));
+SELECT nombre, precio FROM articulos WHERE precio IN (SELECT MIN(precio) FROM articulos);
 
 -- 18.- Mostrar el nombre y el precio del articulo más caro de la tienda
-SELECT nombre, precio FROM articulos WHERE codigo IN (SELECT codigo FROM articulos WHERE precio IN (SELECT MAX(precio) FROM articulos));
+SELECT nombre, precio FROM articulos WHERE precio IN (SELECT MAX(precio) FROM articulos);

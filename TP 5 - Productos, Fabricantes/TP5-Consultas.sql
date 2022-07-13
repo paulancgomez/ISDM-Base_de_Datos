@@ -44,7 +44,7 @@ SELECT nombre, precio FROM productos ORDER BY nombre ASC, precio DESC; -- 1° Or
 SELECT * FROM fabricantes LIMIT 5; -- limitar los resultados a los 5 primeros 
 
 -- 19. Devolver una lista con 2 filas a partir de la cuarta fila de la tabla fabricante. La cuarta fila también se debe incluir en la respuesta. 
-SELECT nombre, precio FROM productos LIMIT 3,2; -- Parto desde la fila 3 (ya que las filas empiezan desde 0) y muestro 2 filas
+SELECT * FROM fabricantes LIMIT 3,2; -- Parto desde la fila 3 (ya que las filas empiezan desde 0) y muestro 2 filas
 
 -- 20. Listar el nombre y el precio del producto más barato. (Utilice solamente las cláusulas ORDER BY y LIMIT)
 SELECT nombre, precio FROM productos ORDER BY precio ASC LIMIT 1;
