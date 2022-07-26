@@ -1,0 +1,47 @@
+CREAR BASE DE DATOS
+
+CREATE DATABASE nombreBD;
+---------------------------------------------------------------------------------------
+-- AGREGAR o INSERTAR
+
+-- FORMA 1: parametros
+INSERT INTO nombreTabla (campo1, campo2) VALUES
+(campo1, valor2),
+(campo2, valor2);
+
+-- FORMA 2: sin parametros pero respetando el orden
+INTO INSERT nombreTabla VALUES (valor1, valor2);
+
+------------------------------------------------------------------------------------------------
+-- AGREGAR UNA COLUMNA
+
+ALTER TABLE nombreTabla ADD nombreColumna tipoDeDato;
+
+-------------------------------------------------------------------------------------------------
+SELECCIONAR
+
+SELECT * FROM nombreTabla;
+
+-------------------------------------------------------------------------------------------------
+-- ELIMINAR
+DELETE FROM nombreTabla WHERE condicion;
+
+-- ELIMINAR SOLO UN REGISTRO: Elimina el registro donde el campo 'nombreCampo' tenga el valor 'valorCampo'  
+DELETE FROM nombreTabla WHERE campo = valor;
+
+-- ELIMINAR TODOS LOS REGISTROS SIN ELIMINAR LA TABLA
+DELETE FROM nombreTabla;
+
+------------------------------------------------------------------------------------------------
+-- MODIFICAR
+UPDATE nombreTabla SET campo1=valor1, campo2, valor2... WHERE condicion;
+
+-- TODOS LOS CAMPOS
+
+UPDATE nombreTabla SET campo = valorModificado;
+UPDATE nombreTabla SET campo = campo * 1.15;
+
+-- UN CAMPO EN ESPECIFICO
+
+UPDATE nombreTabla SET nombreColumna = valorDeseado WHERE nombreColumna = valorActual;
+-----------------------------------------------------------------------------------------------
