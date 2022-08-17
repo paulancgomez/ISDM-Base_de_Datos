@@ -1,0 +1,118 @@
+DROP DATABASE IF EXISTS recuperatorio2;
+
+CREATE DATABASE recuperatorio2;
+
+USE recuperatorio2;
+
+DROP TABLE IF EXISTS domicilios;
+
+CREATE TABLE domicilios(
+	idDomicilio INT AUTO_INCREMENT PRIMARY KEY,
+	calle VARCHAR(20),
+	numero INT
+);
+
+DROP TABLE IF EXISTS ciudades;
+
+CREATE TABLE ciudades(
+	idCiudad INT AUTO_INCREMENT PRIMARY KEY,
+	nombre VARCHAR(20)
+);
+
+CREATE TABLE clientes(
+	dni INT PRIMARY KEY,
+	nombre VARCHAR(20),
+	apellidoP VARCHAR(20),
+	apellidoM VARCHAR(20),
+	idDomicilio INT,
+	idCiudad INT,
+	telefono LONG,
+	FOREIGN KEY (idCiudad) REFERENCES ciudades(idCiudad),
+	FOREIGN KEY (idDomicilio) REFERENCES domicilios(idDomicilio)
+);
+
+CREATE TABLE equipos(
+	idEquipo INT AUTO_INCREMENT PRIMARY KEY,
+	descripcion VARCHAR(20),
+	precio DOUBLE,
+	cantStock INT
+);
+
+CREATE TABLE secciones(
+	idSeccion INT AUTO_INCREMENT PRIMARY KEY,
+	nombre VARCHAR(20)
+);
+
+CREATE TABLE empleados(
+	dni INT PRIMARY KEY,
+	nombre VARCHAR(20),
+	apellidoP VARCHAR(20),
+	apellidoM VARCHAR(20),
+	idSeccion INT,
+	FOREIGN KEY (idSeccion) REFERENCES secciones(idSeccion)
+);
+
+CREATE TABLE compras(
+	idCompra INT AUTO_INCREMENT PRIMARY KEY,
+	dniCliente INT,
+	fecha INT,
+	total DOUBLE,
+	dniEmpleado INT,
+	FOREIGN KEY (dniCliente) REFERENCES clientes(dni),
+	FOREIGN KEY (dniEmpleado) REFERENCES empleados(dni)
+);
+
+CREATE TABLE detalle_compra(
+	idCompra INT,
+	numLinea INT,
+	idEquipo INT,
+	cantidad INT,
+	subtotal DOUBLE,
+	PRIMARY KEY(idCompra, numLinea),
+	FOREIGN KEY (idCompra) REFERENCES compras(idCompra),
+	FOREIGN KEY (idEquipo) REFERENCES equipos(idEquipo)
+);
+-----------------------------------------------------------------------------------------------
+INSERT INTO ciudades(nombre)
+VALUES('SALTA'),
+('GENERAL GUEMES'),
+('ORAN'); 
+
+INSERT INTO domicilios(calle, numero)
+VALUES('BELGRANO', 12),
+('SAN MARTIN', 13),
+('MITRE', 14);
+
+INSERT INTO clientes(dni, nombre, apellidoP, apellidoM, idDomicilio, idCiudad, telefono)
+VALUES(31000111, 'JUAN', 'PEREZ', 'SANCHEZ', 1, 1, 3870000001),
+(32000111, 'JUAN', 'LOPEZ', 'RUIZ', 2, 1, 3870000002),
+(33000111, 'JUAN', 'FLORES', 'PAZ', 3, 1, 3870000003);
+
+INSERT INTO equipos(descripcion, precio, cantStock)
+VALUES('descripcion 1', 50000, 5),
+('descripcion 2', 100000, 6),
+('descripcion 3', 150000, 7),
+('descripcion 4', 200000, 8);
+
+INSERT INTO secciones(nombre)
+VALUES ('VENTAS'),
+('GERENTE'),
+('CAJERO');
+
+INSERT INTO empleados(dni, nombre, apellidoP, apellidoM, idSeccion)
+VALUES(41000111, 'MARTA', 'GOMEZ', 'PEREZ', 1),
+(42000111, 'MARTA', 'LEON', 'RUIZ', 1),
+(43000111, 'MARTA', 'LOPEZ', 'PAZ', 2);
+
+INSERT INTO compras(dniCliente, fecha, total, dniEmpleado)
+VALUES(31000111, 01012020, 350000, 41000111),
+               (31000111, 01012021, 400000, 41000111),
+               (31000111, 01012022, 50000, 41000111),
+               (32000111, 01012022, 500000, 42000111);
+
+INSERT INTO detalle_compra(idCompra, numLinea, idEquipo, cantidad, subtotal)
+VALUES(1, 1, 1, 2, 100000),
+(1, 2, 3, 2, 250000),
+(2, 1, 4, 2, 400000),
+(3, 1, 1, 1, 50000),
+(4, 1, 2, 5, 500000);
